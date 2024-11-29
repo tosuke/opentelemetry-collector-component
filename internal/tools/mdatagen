@@ -1,0 +1,6 @@
+#!/bin/sh
+# vim: set ft=sh :
+
+cwd="$(dirname "$0")"
+make -C "$cwd" bin/mdatagen
+exec "$cwd"/bin/mdatagen "$@"

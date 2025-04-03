@@ -1,6 +1,4 @@
 #!/bin/sh
 # vim: set ft=sh :
 
-cwd="$(dirname "$0")"
-make -C "$cwd" bin/mdatagen
-exec "$cwd"/bin/mdatagen "$@"
+exec "$(cd "$(dirname "$0")" && go tool -n go.opentelemetry.io/collector/cmd/mdatagen)" "$@"

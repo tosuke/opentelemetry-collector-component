@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Arthur1/otelcol-metadata-schema/main/metadata.schema.json
 type: downsampling
-github_project: tosuke/opentelemetry-collector-components
+github_project: tosuke/opentelemetry-collector-component
 
 status:
   class: processor

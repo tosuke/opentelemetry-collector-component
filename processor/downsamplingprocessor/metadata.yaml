@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Arthur1/otelcol-metadata-schema/main/metadata.schema.json
+type: downsampling
+github_project: tosuke/opentelemetry-collector-component
+
+status:
+  class: processor
+  stability:
+    development: [metrics]
+  warnings: [Statefulness]
+  distributions: []
+
+tests:
+  config:
+
+attributes:
+  otel.signal:
+    description: The signal type of the item.
+    type: string
+    enum:
+      - metrics
+      - logs
+      - traces
+
+telemetry:
+  metrics:
+    processor_incoming_items:
+      enabled: true
+      stability:
+        level: development
+      description: The total number of items received by the processor.
+      unit: "{items}"
+      sum:
+        value_type: int
+        monotonic: true
+      attributes: [otel.signal]
+    processor_outgoing_items:
+      enabled: true
+      stability:
+        level: development
+      description: The total number of items emitted by the processor.
+      unit: "{items}"
+      sum:
+        value_type: int
+        monotonic: true
+      attributes: [otel.signal]
+    processor_downsampling_cardinality:
+      enabled: true
+      stability:
+        level: development
+      description: The current number of unique keys being processed.
+      unit: "{items}"
+      gauge:
+        value_type: int
+        async: true
+      attributes: [otel.signal]
+    processor_downsampling_cardinality_limit:
+      enabled: true
+      stability:
+        level: development
+      description: The maximum number of unique keys allowed in the processor.
+      unit: "{items}"
+      gauge:
+        value_type: int
+        async: true
+      attributes: [otel.signal]
+    processor_downsampling_cardinality_exceeded_items:
+      enabled: true
+      stability:
+        level: development
+      description: The total number of items that exceeded the cardinality limit.
+      unit: "{items}"
+      sum:
+        value_type: int
+        monotonic: true
+        async: true
+      attributes: [otel.signal]
+
